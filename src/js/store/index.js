@@ -1,9 +1,12 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from '../reducers/index'
+import forbiddenWordsMiddleware from '../middleware/index'
 
-const store = createStore(rootReducer)
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-store.subscribe(function () {
-  console.log(store.getState())
-})
+const store = createStore(
+  rootReducer,
+  storeEnhancers(applyMiddleware(forbiddenWordsMiddleware))
+)
+
 export default store

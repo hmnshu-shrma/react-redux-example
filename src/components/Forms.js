@@ -18,7 +18,6 @@ class ConnectedForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleChange = event => {
-    console.log(event.target.id)
     return this.setState({ [event.target.id]: event.target.value })
   }
   handleSubmit = event => {
